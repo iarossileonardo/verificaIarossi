@@ -40,6 +40,12 @@ public class GestioneServizio extends Thread{
             String nMess;
 
             do {
+                if ((biglietti.getGold() <= 0) && (biglietti.getPit() <= 0) && (biglietti.getParterre() <= 0)) {
+                    System.out.println("BIGLIETTI FINITI, notifico client");
+                    out.writeBytes("" + 800);
+                    nMess = "QUIT";
+                    break;
+                }
                 nMess = in.readLine();
 
                 if (nMess.equals("N")) {
@@ -93,6 +99,9 @@ public class GestioneServizio extends Thread{
                 }
             } while (!nMess.equals("QUIT"));
             System.out.println("Ciao client");
+            in.close();
+            out.close();
+            s0.close();
             
         } catch (Exception e) {}
 

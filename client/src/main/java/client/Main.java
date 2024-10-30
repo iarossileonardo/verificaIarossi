@@ -68,5 +68,9 @@ public class Main {
                     break;
             }
         } while (!messaggio.equals("QUIT"));
+        input.close();
+        in.close();
+        out.close();
+        s0.close();
     }
 }
