@@ -32,12 +32,15 @@ public class Main {
         do {
             System.out.println("Menu------------");
             System.out.println("1)Acquistare biglietti");
-            System.out.println("2) richiedere disponibilità");
+            System.out.println("2)Richiedere disponibilità");
             System.out.println("3)Uscire");
             String scelta = input.nextLine();
             switch (scelta) {
                 case "1":
                     System.out.println("Quanti biglietti vuoi acquistare?");
+                    messaggio = input.nextLine();
+                    out.writeBytes(messaggio + "\n");
+                    System.out.println("Che tipo? (gold, pit o parterre)");
                     messaggio = input.nextLine();
                     out.writeBytes(messaggio + "\n");
                     esito = in.readLine();
@@ -51,7 +54,7 @@ public class Main {
                     messaggio = "N";
                     out.writeBytes(messaggio + "\n");
                     String nBiglietti = in.readLine();
-                    System.out.println("Sono disponibili " + nBiglietti + " biglietti");
+                    System.out.println("Sono disponibili " + nBiglietti);
                     break;
                 case "3":
                     System.out.println("chiudo");

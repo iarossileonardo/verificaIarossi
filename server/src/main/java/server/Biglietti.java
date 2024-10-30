@@ -3,25 +3,34 @@ package server;
 import java.util.ArrayList;
 
 public class Biglietti {
-    ArrayList<String> gold = new ArrayList<String>();
-    ArrayList<String> pit = new ArrayList<String>();
-    ArrayList<String> parterre = new ArrayList<String>();
+    int gold;
+    int pit;
+    int parterre;
     public Biglietti() {
-        for (int i = 0; i < 25; i++) {
-            gold.add("" + i);
-            pit.add("" + i);
-            parterre.add("" + i);
-        }
+        gold = 10;
+        pit = 15;
+        parterre = 25;
     }
-    public ArrayList<String> getGold() {
+    public int getGold() {
         return gold;
     }
-    public ArrayList<String> getPit() {
+    public int getPit() {
         return pit;
     }
-    public ArrayList<String> getParterre() {
+    public int getParterre() {
         return parterre;
     }
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+    public void setPit(int pit) {
+        this.pit = pit;
+    }
+    public void setParterre(int parterre) {
+        this.parterre = parterre;
+    }
+
+    
 
 
     

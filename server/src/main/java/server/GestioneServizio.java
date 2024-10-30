@@ -44,21 +44,51 @@ public class GestioneServizio extends Thread{
 
                 if (nMess.equals("N")) {
                     System.out.println("invio quantità biglietti");
-                    out.writeBytes("Gold: " + Integer.toString(biglietti.getGold().size()) + " pit: " + biglietti.getPit().size() + " parterre: " + biglietti.getParterre().size() + "\n");
+                    out.writeBytes("Gold: " + Integer.toString(biglietti.getGold()) + " pit: " + biglietti.getPit() + " parterre: " + biglietti.getParterre() + "\n");
                 }
                 else if(nMess.equals("QUIT")) {
-                    //nomi.remove(nome);
+                    nomi.remove(nome);
                     nMess = "QUIT";
                     break;
                 } else {
-                    if(Integer.parseInt(nMess) > biglietti.getGold().size()){
-                        System.out.println("Non possibile");
-                        out.writeBytes("KO\n");
-                    } else {
-                        for (int i = 0; i < Integer.parseInt(nMess); i++) {
-                            biglietti.getGold().remove(i);
+
+                    String tipo = in.readLine();
+
+                    int tipoB;
+
+                    if (tipo.equals("gold")) {
+                        tipoB = biglietti.getGold();
+                        if(Integer.parseInt(nMess) > tipoB){
+                            System.out.println("Non possibile");
+                            out.writeBytes("KO\n");
+                        } else {
+                            System.out.println("Sto per rimuovere");
+                            biglietti.setGold(tipoB - Integer.parseInt(nMess));
+                            out.writeBytes("OK\n");
                         }
-                        out.writeBytes("OK\n");
+                    } else if (tipo.equals("pit")){
+                        tipoB = biglietti.getPit();
+                        if(Integer.parseInt(nMess) > tipoB){
+                            System.out.println("Non possibile");
+                            out.writeBytes("KO\n");
+                        } else {
+                            System.out.println("Sto per rimuovere");
+                            biglietti.setPit(tipoB - Integer.parseInt(nMess));
+                            out.writeBytes("OK\n");
+                        }
+                    } else if (tipo.equals("parterre")){
+                        tipoB = biglietti.getParterre();
+                        if(Integer.parseInt(nMess) > tipoB){
+                            System.out.println("Non possibile");
+                            out.writeBytes("KO\n");
+                        } else {
+                            System.out.println("Sto per rimuovere");
+                            biglietti.setParterre(tipoB - Integer.parseInt(nMess));
+                            out.writeBytes("OK\n");
+                        }
+                    } else {
+                        System.out.println("Non esiste il tipo di biglietto richiesto");
+                        out.writeBytes("KO\n");
                     }
                 }
             } while (!nMess.equals("QUIT"));
